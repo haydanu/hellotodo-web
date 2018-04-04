@@ -95,7 +95,7 @@ input.center {
 .border {
   border: 3px solid green;
   width: 500px;
-  height: 110px;
+  height: 500px;
   margin-top: 10px;
   box-sizing: border-box;
 }
