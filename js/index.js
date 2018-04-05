@@ -3,8 +3,7 @@ const addButton = document.getElementById('addButton');
 const outputBox = document.getElementById('outputBox');
 const form = document.getElementById('form');
 
-let listInArray = [];
-//localStorage.getItem('listToDo') ? JSON.parse(localStorage.getItem('listToDo')) : [];
+let listInArray = localStorage.getItem('listToDo') ? JSON.parse(localStorage.getItem('listToDo')) : [];
 
 localStorage.setItem('listToDo', JSON.stringify(listInArray));
 const data = JSON.parse(localStorage.getItem('listToDo'));
@@ -26,6 +25,8 @@ const createToDo = function(e) {
 
 const deleteToDo = node => {
   outputBox.removeChild(outputBox.lastElementChild);
+  listInArray.splice('listToDo', 1);
+  localStorage.setItem('listToDo', JSON.stringify(listInArray));
 };
 
 
