@@ -18,7 +18,7 @@ const createToDo = function(e) {
   e.preventDefault();
 
   listToDo(createListToDo.value);
-  listInArray.push(createListToDo.value);
+  listInArray.push({todo: createListToDo.value, });
   localStorage.setItem('listToDo', JSON.stringify(listInArray));
   createListToDo.value = '';
 };
@@ -28,9 +28,6 @@ const deleteToDo = node => {
   listInArray.splice('listToDo', 1);
   localStorage.setItem('listToDo', JSON.stringify(listInArray));
 };
-
-
-
 
 
 
