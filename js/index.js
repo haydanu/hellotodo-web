@@ -2,6 +2,7 @@ const createListToDo = document.getElementById('createListToDo');
 const addButton = document.getElementById('addButton');
 const outputBox = document.getElementById('outputBox');
 const form = document.getElementById('form');
+const search = document.getElementById('search');
 
 let listInArray = localStorage.getItem('listToDo') ? JSON.parse(localStorage.getItem('listToDo')) : [];
 
@@ -20,11 +21,11 @@ const createToDo = function(e) {
   if (createListToDo.value == '') {
     alert('Enter a List ToDo You Want');
   } else {
-    listToDo(createListToDo.value);
     listInArray.push({
       todo: createListToDo.value,
     });
     localStorage.setItem('listToDo', JSON.stringify(listInArray));
+    listToDo(createListToDo.value);
     createListToDo.value = '';
   };
 };
@@ -35,5 +36,13 @@ const deleteToDo = node => {
   localStorage.setItem('listToDo', JSON.stringify(listInArray));
 };
 
+// const searchToDo = () 
+
+
+
+
+
+
+// Listener
 addButton.addEventListener('click', createToDo);
 form.addEventListener('submit', createToDo);
