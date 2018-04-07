@@ -7,13 +7,18 @@ const search = document.getElementById('search');
 let listInArray = localStorage.getItem('listToDo') ? JSON.parse(localStorage.getItem('listToDo')) : [];
 
 localStorage.setItem('listToDo', JSON.stringify(listInArray));
-const data = JSON.parse(localStorage.getItem('listToDo'));
+let data = JSON.parse(localStorage.getItem('listToDo'));
+
 
 const listToDo = (text) => {
-  const div = document.createElement('div');
-  div.innerHTML = `${text} <i onclick='deleteToDo()' class='fa fa-remove'></i>`;
+  let div = document.createElement('div');
+  div.setAttribute('id', 'index');
+  div.innerHTML = `${text}
+  <span onclick='editToDo()' class='fa edit'>edit</span>
+  <span onclick='deleteToDo()' class='fa fa-remove'></span>`;
   outputBox.appendChild(div);
-}
+};
+
 
 const createToDo = function(e) {
   e.preventDefault();
@@ -21,28 +26,38 @@ const createToDo = function(e) {
   if (createListToDo.value == '') {
     alert('Enter a List ToDo You Want');
   } else {
-    listInArray.push({
-      todo: createListToDo.value,
-    });
+    listInArray.push(createListToDo.value);
     localStorage.setItem('listToDo', JSON.stringify(listInArray));
     listToDo(createListToDo.value);
     createListToDo.value = '';
   };
 };
 
-const deleteToDo = node => {
+
+const deleteToDo = () => {
   outputBox.removeChild(outputBox.lastElementChild);
   listInArray.splice('listToDo', 1);
   localStorage.setItem('listToDo', JSON.stringify(listInArray));
 };
 
-// const searchToDo = () 
+
+const searchToDo = function() {
+  let text = search.value.toLowerCase()
+  let find = listInArray.filter(word => word.toLowerCase().includes(text));
+  alert(find.join(', ')); // Alert the result
+};
 
 
-
-
+const editToDo = (index) => {
+  content = prompt('input your list here');
+  let eachToDo = document.getElementById('index');
+  eachToDo.innerHTML = `${content}
+  <span onclick='editToDo()' class='fa edit' >edit</span>
+  <span onclick='deleteToDo()' class='fa fa-remove'></span>`;
+};
 
 
 // Listener
 addButton.addEventListener('click', createToDo);
 form.addEventListener('submit', createToDo);
+search.addEventListener('keyUp', searchToDo);

@@ -101,11 +101,18 @@ input.center {
 }
 
 .fa {
-  font-size: 18px;
-  color: red;
   float: right;
   padding-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
 }
+
+.edit{
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+
 
 li:hover {
   font-weight: bold;
