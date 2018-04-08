@@ -71,6 +71,7 @@ input.center {
   box-sizing: border-box;
   font-size: 16px;
   margin-top: 16px;
+  padding-left: 5px;
 }
 
 .btn {
@@ -105,14 +106,25 @@ input.center {
   padding-right: 5px;
   margin-left: 5px;
   cursor: pointer;
+  opacity: 0.2;
 }
 
-.edit{
+.fa:hover {
+  color: red;
+  opacity: 0.8;
+}
+
+.edit {
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
+  opacity: 0.8;
+  padding-top: 1px;
 }
 
-
+.edit:hover {
+  font-style: italic;
+  font-weight: 100;
+}
 
 li:hover {
   font-weight: bold;
