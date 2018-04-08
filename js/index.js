@@ -42,9 +42,10 @@ const deleteToDo = () => {
 
 
 const searchToDo = function() {
-  let text = search.value.toLowerCase()
+  let searchToDoList = document.getElementById('searchToDoList');
+  let text = searchToDoList.value.toLowerCase()
   let find = listInArray.filter(word => word.toLowerCase().includes(text));
-  alert(find.join(', ')); // Alert the result
+  alert(find.join(', '));
 };
 
 
@@ -56,8 +57,12 @@ const editToDo = (index) => {
   <span onclick='deleteToDo()' class='fa fa-remove'></span>`;
 };
 
+data.forEach(item =>{
+  listToDo(item);
+});
+
 
 // Listener
 addButton.addEventListener('click', createToDo);
 form.addEventListener('submit', createToDo);
-search.addEventListener('keyUp', searchToDo);
+search.addEventListener('submit', searchToDo);
