@@ -57,23 +57,13 @@ const searchToDo = function() {
 
 const editToDo = (index) => { // localStorage not change when edit
   content = prompt('input your list here');
-  let eachToDo = document.getElementById('index');
-
-  listInArray[index] = content;
-  localStorage.setItem('listToDo', JSON.stringify(listInArray));
-
-  data.forEach((item, index) => {
-    listToDo(item, index);
-  });
-
-  display();
 
   if (content === '') {
     alert('please create your new todo');
   } else {
-    eachToDo.innerHTML = `${content}
-    <span onclick='deleteToDo()' class='fa fa-remove'></span>
-    <span onclick='editToDo()' class='fa edit' >edit</span>`;
+    listInArray[index] = content;
+    localStorage.setItem('listToDo', JSON.stringify(listInArray));
+    display();
   };
 
 };
