@@ -23,7 +23,7 @@ const listToDo = (text) => {
 const createToDo = function(e) {
   e.preventDefault();
 
-  if (createListToDo.value == '') {
+  if (createListToDo.value === '' || '    ') {
     alert('Enter a List ToDo You Want');
   } else {
     listInArray.push(createListToDo.value);
