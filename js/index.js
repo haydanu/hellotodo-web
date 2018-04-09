@@ -10,12 +10,13 @@ localStorage.setItem('listToDo', JSON.stringify(listInArray));
 let data = JSON.parse(localStorage.getItem('listToDo'));
 
 
-const listToDo = (text) => {
+const listToDo = (text, index) => {
+  //create div -> append ke output
   let div = document.createElement('div');
   div.setAttribute('id', 'index');
   div.innerHTML = `${text}
-  <span onclick='deleteToDo()' class='fa fa-remove'></span>
-  <span onclick='editToDo()' class='fa edit'>edit</span>`;
+  <span onclick='deleteToDo(${index})' class='fa fa-remove'></span>
+  <span onclick='editToDo(${index})' class='fa edit'>edit</span>`;
   outputBox.appendChild(div);
 };
 
@@ -30,16 +31,19 @@ const createToDo = function(e) {
   } else {
     listInArray.push(createListToDo.value);
     localStorage.setItem('listToDo', JSON.stringify(listInArray));
-    listToDo(createListToDo.value);
     createListToDo.value = '';
+    display();
   };
+
+
 };
 
 
-const deleteToDo = () => {
-  outputBox.removeChild(outputBox.lastElementChild);
-  listInArray.splice('listToDo', 1);
+const deleteToDo = (index) => {
+  // outputBox.removeChild(outputBox.lastElementChild);
+  listInArray.splice(index, 1);
   localStorage.setItem('listToDo', JSON.stringify(listInArray));
+  display();
 };
 
 
@@ -55,6 +59,15 @@ const editToDo = (index) => { // localStorage not change when edit
   content = prompt('input your list here');
   let eachToDo = document.getElementById('index');
 
+  listInArray[index] = content;
+  localStorage.setItem('listToDo', JSON.stringify(listInArray));
+
+  data.forEach((item, index) => {
+    listToDo(item, index);
+  });
+
+  display();
+
   if (content === '') {
     alert('please create your new todo');
   } else {
@@ -65,9 +78,16 @@ const editToDo = (index) => { // localStorage not change when edit
 
 };
 
-data.forEach(item => {
-  listToDo(item);
-});
+function display(){
+  let data = JSON.parse(localStorage.getItem('listToDo'));
+  outputBox.innerHTML = ""
+  data.forEach((item, index) => {
+    listToDo(item, index);
+  });
+}
+
+display();
+
 
 
 // Listener
