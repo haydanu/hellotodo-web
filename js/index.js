@@ -25,8 +25,8 @@ const createToDo = function(e) {
 
   if (createListToDo.value === '') {
     alert('Enter a List ToDo You Want');
-  } else if (createListToDo.value === '  ') {
-    alert('List can not be just space!!')
+  // } else if (createListToDo.value == ' ') {
+  //   alert('List can not be just space!!')
   } else {
     listInArray.push(createListToDo.value);
     localStorage.setItem('listToDo', JSON.stringify(listInArray));
