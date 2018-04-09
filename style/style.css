@@ -199,3 +199,8 @@ form.home {
 .flex-1 {
   flex: 1;
 }
+
+input#searchToDoList {
+  margin-top: 7px;
+  margin-left: -370px;
+}
