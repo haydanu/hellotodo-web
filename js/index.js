@@ -47,7 +47,8 @@ const deleteToDo = (index) => {
 };
 
 
-const searchToDo = function() {
+const searchToDo = function(e) {
+  e.preventDefault();
   let searchToDoList = document.getElementById('searchToDoList');
   let text = searchToDoList.value.toLowerCase()
   let find = listInArray.filter(word => word.toLowerCase().includes(text));
